@@ -1,0 +1,63 @@
+mysql> ALTER TABLE employee_payroll ADD gender char(1) AFTER name;
+Query OK, 0 rows affected (0.74 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe employee_payroll;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100) | NO   |     | NULL    |                |
+| gender | char(1)      | YES  |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+5 rows in set (0.04 sec)
+
+mysql> update employee_payroll set gender='F' where name='Ayesha';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+--------+------------+
+| id | name    | gender | salary | start      |
++----+---------+--------+--------+------------+
+|  1 | Ayesha  | F      |  20000 | 2018-03-03 |
+|  2 | Yash    | NULL   |  30000 | 2021-08-11 |
+|  3 | Nirmala | NULL   |  40000 | 2022-01-07 |
++----+---------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update employee_payroll set gender='F' where name='Nirmala';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set gender='M' where name='Yash';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+--------+------------+
+| id | name    | gender | salary | start      |
++----+---------+--------+--------+------------+
+|  1 | Ayesha  | F      |  20000 | 2018-03-03 |
+|  2 | Yash    | M      |  30000 | 2021-08-11 |
+|  3 | Nirmala | F      |  40000 | 2022-01-07 |
++----+---------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update employee_payroll set salary=50000.00 where name='Ayesha';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+--------+------------+
+| id | name    | gender | salary | start      |
++----+---------+--------+--------+------------+
+|  1 | Ayesha  | F      |  50000 | 2018-03-03 |
+|  2 | Yash    | M      |  30000 | 2021-08-11 |
+|  3 | Nirmala | F      |  40000 | 2022-01-07 |
++----+---------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql>
