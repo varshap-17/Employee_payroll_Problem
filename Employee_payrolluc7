@@ -1,0 +1,54 @@
+mysql> select AVG(salary) from employee_payroll group by gender;
++-------------+
+| AVG(salary) |
++-------------+
+|       45000 |
+|       30000 |
++-------------+
+2 rows in set (0.08 sec)
+
+mysql> select gender,AVG(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | AVG(salary) |
++--------+-------------+
+| F      |       45000 |
+| M      |       30000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select gender,MAX(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | MAX(salary) |
++--------+-------------+
+| F      |       50000 |
+| M      |       30000 |
++--------+-------------+
+2 rows in set (0.06 sec)
+
+mysql> select gender,MIN(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | MIN(salary) |
++--------+-------------+
+| F      |       40000 |
+| M      |       30000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select gender,COUNT(salary) from employee_payroll group by gender;
++--------+---------------+
+| gender | COUNT(salary) |
++--------+---------------+
+| F      |             2 |
+| M      |             1 |
++--------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> select AVG(salary) from employee_payroll WHERE GENDER='F' group by gender;
++-------------+
+| AVG(salary) |
++-------------+
+|       45000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql>
