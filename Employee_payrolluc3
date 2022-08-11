@@ -1,0 +1,2 @@
+mysql> Insert into employee_payroll(name,salary,start) values
+          -> ('Ayesha',20000.00,'2018-03-03'),('Yash',30000.00,'2021-08-11'),('Nirmala',40000.00,'2022-01-07');
