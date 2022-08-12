@@ -1,0 +1,66 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (3.95 sec)
+
+mysql> use payroll_service;
+Database changed
+mysql> select * from employee_payroll;
++----+---------+--------+--------+------------+
+| id | name    | gender | salary | start      |
++----+---------+--------+--------+------------+
+|  1 | Ayesha  | F      |  50000 | 2018-03-03 |
+|  2 | Yash    | M      |  30000 | 2021-08-11 |
+|  3 | Nirmala | F      |  40000 | 2022-01-07 |
++----+---------+--------+--------+------------+
+3 rows in set (0.31 sec)
+
+mysql> alter table employee_payroll ADD phone_no VARCHAR(50) AFTER name;
+Query OK, 0 rows affected (3.69 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll ADD address VARCHAR(50) AFTER phone_no;
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll ADD department VARCHAR(50) NOT NULL AFTER address;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll ALTER address set default 'TBD';
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe employee_payroll;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(100) | NO   |     | NULL    |                |
+| phone_no   | varchar(50)  | YES  |     | NULL    |                |
+| address    | varchar(50)  | YES  |     | TBD     |                |
+| department | varchar(50)  | NO   |     | NULL    |                |
+| gender     | char(1)      | YES  |     | NULL    |                |
+| salary     | double       | NO   |     | NULL    |                |
+| start      | date         | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.40 sec)
+
+mysql> select * from employee_payroll;
++----+---------+----------+---------+------------+--------+--------+------------+
+| id | name    | phone_no | address | department | gender | salary | start      |
++----+---------+----------+---------+------------+--------+--------+------------+
+|  1 | Ayesha  | NULL     | NULL    |            | F      |  50000 | 2018-03-03 |
+|  2 | Yash    | NULL     | NULL    |            | M      |  30000 | 2021-08-11 |
+|  3 | Nirmala | NULL     | NULL    |            | F      |  40000 | 2022-01-07 |
++----+---------+----------+---------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql>
