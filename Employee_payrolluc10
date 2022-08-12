@@ -1,0 +1,32 @@
+mysql> insert into employee_payroll
+    -> (name,deductions,department,gender,basic_pay,taxable_pay,tax,net_pay,start)values
+    -> ('Ayesha',1000.00,'marketing','F',30000.00,2000.00,500.00,1500.00,'2018-01-03');
+Query OK, 1 row affected (0.37 sec)
+
+mysql> select * from employee_payroll;
++----+---------+----------+---------+------------+------------+--------+-----------+-------------+-----+---------+------------+
+| id | name    | phone_no | address | deductions | department | gender | basic_pay | taxable_pay | tax | net_pay | start      |
++----+---------+----------+---------+------------+------------+--------+-----------+-------------+-----+---------+------------+
+|  1 | Ayesha  | NULL     | NULL    |          0 |            | F      |     50000 |           0 |   0 |       0 | 2018-03-03 |
+|  2 | Yash    | NULL     | NULL    |          0 |            | M      |     30000 |           0 |   0 |       0 | 2021-08-11 |
+|  3 | Nirmala | NULL     | NULL    |          0 |            | F      |     40000 |           0 |   0 |       0 | 2022-01-07 |
+| 19 | Ayesha  | NULL     | TBD     |       1000 | marketing  | F      |     30000 |        2000 | 500 |    1500 | 2018-01-03 |
++----+---------+----------+---------+------------+------------+--------+-----------+-------------+-----+---------+------------+
+4 rows in set (0.10 sec)
+
+mysql> update employee_payroll set department='sales' where id=1;
+Query OK, 1 row affected (0.17 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+----------+---------+------------+------------+--------+-----------+-------------+-----+---------+------------+
+| id | name    | phone_no | address | deductions | department | gender | basic_pay | taxable_pay | tax | net_pay | start      |
++----+---------+----------+---------+------------+------------+--------+-----------+-------------+-----+---------+------------+
+|  1 | Ayesha  | NULL     | NULL    |          0 | sales      | F      |     50000 |           0 |   0 |       0 | 2018-03-03 |
+|  2 | Yash    | NULL     | NULL    |          0 |            | M      |     30000 |           0 |   0 |       0 | 2021-08-11 |
+|  3 | Nirmala | NULL     | NULL    |          0 |            | F      |     40000 |           0 |   0 |       0 | 2022-01-07 |
+| 19 | Ayesha  | NULL     | TBD     |       1000 | marketing  | F      |     30000 |        2000 | 500 |    1500 | 2018-01-03 |
++----+---------+----------+---------+------------+------------+--------+-----------+-------------+-----+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql>
