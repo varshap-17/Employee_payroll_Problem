@@ -1,0 +1,40 @@
+mysql> alter table employee_payroll ADD deductions double NOT NULL AFTER address;
+Query OK, 0 rows affected (7.23 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll RENAME COLUMN salary TO basic_pay;
+Query OK, 0 rows affected (0.38 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll ADD taxable_pay double NOT NULL AFTER basic_pay;
+Query OK, 0 rows affected (1.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll ADD tax double NOT NULL AFTER taxable_pay;
+Query OK, 0 rows affected (0.43 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll ADD net_pay double NOT NULL AFTER tax;
+Query OK, 0 rows affected (0.19 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe employee_payroll;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(100) | NO   |     | NULL    |                |
+| phone_no    | varchar(50)  | YES  |     | NULL    |                |
+| address     | varchar(50)  | YES  |     | TBD     |                |
+| deductions  | double       | NO   |     | NULL    |                |
+| department  | varchar(50)  | NO   |     | NULL    |                |
+| gender      | char(1)      | YES  |     | NULL    |                |
+| basic_pay   | double       | NO   |     | NULL    |                |
+| taxable_pay | double       | NO   |     | NULL    |                |
+| tax         | double       | NO   |     | NULL    |                |
+| net_pay     | double       | NO   |     | NULL    |                |
+| start       | date         | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+12 rows in set (1.18 sec)
+
+mysql>
